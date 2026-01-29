@@ -67,10 +67,14 @@ def transform_openweather(df):
         "main.temp": "temperature",
         "main.feels_like": "feels_like",
         "visibility": "visibility",
-        "weather_description": "description"
+        "weather_description": "description",
+        "sys.sunrise": "sunrise",
+        "sys.sunset": "sunset",
     }, inplace=True)
 
     if "datetime" in df.columns:
         df["datetime"] = pd.to_datetime(df["datetime"], unit="s")
 
     return df
+df_clean = transform_openweather(df)
+print(df_clean)
